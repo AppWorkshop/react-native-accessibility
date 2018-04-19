@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.reactnativeaccessibility;
 
 import android.content.Context;
 import android.support.v4.view.accessibility.AccessibilityEventCompat;
