@@ -7,16 +7,17 @@ const announceForAccessibility = Platform.OS === 'android' ? RNAccessibility.ann
 
 
 module.exports = {
-    announceForAccessibility,
-    focusOnView(ref) {
-        const reactTag = findNodeHandle(ref)
-        if(!reactTag) {
-            console.warn("reactTag is null")
-            return
-        }
-        Platform.OS === 'android' ? UIManager.sendAccessibilityEvent(
-            reactTag,
-            8
-        ) : AccessibilityInfo.setAccessibilityFocus(reactTag)
+  announceForAccessibility,
+  focusOnView(ref) {
+    if(!ref) {
+      console.warn("ref is null")
+      return
     }
+    const reactTag = findNodeHandle(ref)
+
+    Platform.OS === 'android' ? UIManager.sendAccessibilityEvent(
+      reactTag,
+      FOCUS_ON_VIEW
+    ) : AccessibilityInfo.setAccessibilityFocus(reactTag)
+  }
 }
